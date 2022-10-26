@@ -32,6 +32,12 @@ def getMonthlyCases(data):
 
 from functools import reduce
 ## problem 3 mostCases 
+def mostCases(data):
+     monData = getMonthlyCases(data)
+     sumValues = lambda month: reduce(lambda a, b: a+b, month.values())
+     restructure = lambda t: (t[0], sumValues(t[1]))
+     sums = list(map(restructure, monData.items()))
+     return reduce(lambda x, y : x if x[1] > y[1] else y, sums)
 
 ## problem 4a) searchDicts(L,k)
 ## problem 4b) searchDicts2(L,k)
