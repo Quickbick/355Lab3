@@ -40,7 +40,25 @@ def mostCases(data):
      return reduce(lambda x, y : x if x[1] > y[1] else y, sums)
 
 ## problem 4a) searchDicts(L,k)
+def searchDicts(L,k):
+     result = None
+     for item in L:
+          if(k in item.keys()):
+               result = item[k]
+     return result
+
 ## problem 4b) searchDicts2(L,k)
+def searchDicts2h(L, k, ind):
+     item = L[ind]
+     if(k in item[1]):
+          return item[1][k]
+     elif (ind == 0):
+          return None
+     else:
+          return searchDicts2h(L, k, item[0])
+
+def searchDicts2(L,k):
+     return searchDicts2h(L, k, len(L) - 1)
 
 ## problem 5 - getLongest
 
